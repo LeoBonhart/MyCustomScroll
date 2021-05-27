@@ -1,0 +1,19 @@
+{
+  "name": "custom-scroll-leobonhart",
+  "version": "0.1.0",
+  "peerDependencies": {
+    "@angular/common": "^10.0.14",
+    "@angular/core": "^10.0.14",
+    "scss-mixin-leobonhart": "^1.0.5",
+    "rxjs": "~6.5.5"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "description": "My custom scroll",
+  "author": "Valery Ivanov",
+  "keywords": [
+    "npm-custom-scroll",
+    "angular-custom-scroll"
+  ]
+}

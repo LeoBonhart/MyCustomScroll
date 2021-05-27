@@ -6,5 +6,12 @@
 */
 {
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "./projects/custom-scroll/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/custom-scroll/tsconfig.spec.json"
+    }
+]
 }

@@ -1,0 +1,20 @@
+
+<div #overflow class="custom-scroll-overflow">
+    <div #content class="custom-scroll-content" >
+        <ng-content></ng-content>
+    </div>
+    <div #scroll class="custom-scroll custom-scroll__right" 
+        [ngClass]="styleClass" 
+        [class.mdown]="mdown" 
+        [class.always-show]="alwaysShow" 
+        [class.not-allow]="notAllow" 
+        [style.height]="scrollHeight"
+        [style.opacity]="opacity"
+    >
+        <div #thumb class="custom-scroll-thumb" 
+            [ngClass]="styleClass" 
+            [class.always-show]="alwaysShow" 
+            [ngStyle]="thumbStyle"
+        ></div>
+    </div>
+</div>

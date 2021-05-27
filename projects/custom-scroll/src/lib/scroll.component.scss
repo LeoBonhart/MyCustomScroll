@@ -1,0 +1,139 @@
+@import '~scss-mixin-leobonhart/mixins.scss';
+
+$normal_width: 5px;
+$normal_width_hover: 15px;
+$narrow_width: 3px;
+
+@mixin scrollWidth($w) {
+    &.custom-scroll__right{
+        width: $w;
+        .custom-scroll-thumb{
+            width: $w;
+            &.always-show{
+                width: $w;
+            }
+        }
+        &.always-show{
+            width: $w;
+        }
+    }
+}
+
+%show{
+    @include scrollWidth($normal_width);
+}
+
+%hover{
+    &:not(.not-allow){
+        @include scrollWidth($normal_width_hover);
+    }  
+}
+
+%narrow_hover{
+    &:not(.not-allow){
+        @include scrollWidth($narrow_width);
+    }
+}
+
+%narrow_show{
+    @extend %narrow_hover;
+}
+
+%help_position_absolute{
+    user-select: none;
+    position: absolute;
+    content: '';
+}
+
+%help_position_absolute_vertical{
+    @extend %help_position_absolute;    
+    width: 0px;
+    top: 0;
+    &.always-show{
+        width: $normal_width;
+        &.narrow{
+            width: $narrow_width;
+        }
+    }
+}
+
+%help_position_absolute_right{
+    @extend %help_position_absolute_vertical;
+    right: 0;
+}
+:host{
+    display:block;
+    height: 100%;
+    width: 100%;
+}
+.custom-scroll-overflow{
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    max-height: 100%;
+    .custom-scroll-content{
+        height: 100%;
+    }
+    .custom-scroll{
+        background-color: GetMaterialColor('grey',300);
+        transition: width $transitionDur, height $transitionDur, opacity $transitionDur;
+        // z-index: $max-z-index;
+        z-index: 40;
+        opacity: 1;
+        .downscale{
+            z-index: 1;
+        }
+        &.not-allow{
+            opacity: 0 !important;
+            &.always-show{
+                opacity: 0.3 !important;
+            }
+        }
+        .custom-scroll-thumb{
+            cursor: pointer;
+            background-color: GetMaterialColor('grey',500);
+            transition: width $transitionDur, height $transitionDur,;
+        }
+        &__right{
+            @extend %help_position_absolute_right;
+            .custom-scroll-thumb{
+                @extend %help_position_absolute_right;
+            }
+        }
+        &.mdown{
+            @extend %hover;
+        }
+        &.show-scroll{
+            @extend %show;
+        }
+        &.narrow{
+            &.mdown{
+                @extend %narrow_hover;
+            }
+            &.show-scroll{
+                @extend %narrow_show;
+            }
+        }
+        &.deep-purple{
+            background-color: GetMaterialColor('deep-purple',100);
+            .custom-scroll-thumb{
+                background-color: GetMaterialColor('deep-purple', 'r7k12');
+            }
+        }
+    }
+
+    &:hover{
+        .custom-scroll{
+            @extend %show;
+            &:hover{
+                @extend %hover;
+            }
+            &.narrow{
+                @extend %narrow_show;
+                &:hover{
+                    @extend %narrow_hover;
+                }
+            }
+        }
+    }
+}

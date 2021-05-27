@@ -4,6 +4,7 @@
     "codelyzer"
   ],
   "rules": {
+    "no-string-literal": false,
     "align": {
       "options": [
         "parameters",
@@ -53,7 +54,7 @@
     ],
     "no-empty": false,
     "no-inferrable-types": [
-      true,
+      false,
       "ignore-params"
     ],
     "no-non-null-assertion": true,
@@ -83,7 +84,7 @@
       }
     },
     "typedef": [
-      true,
+      false,
       "call-signature"
     ],
     "typedef-whitespace": {
@@ -108,7 +109,9 @@
       "options": [
         "ban-keywords",
         "check-format",
-        "allow-pascal-case"
+        "allow-pascal-case",
+        "allow-leading-underscore",
+        "allow-snake-case"
       ]
     },
     "whitespace": {
